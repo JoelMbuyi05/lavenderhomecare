@@ -68,7 +68,7 @@ Through this project, I improved in:
 
 Clone the repository:
 
-git clone https://github.com/YourUsername/lavender-home-care.git
+git clone https://github.com/JoelMbuyi05/lavenderhomecare.git
 cd lavender-home-care
 Open index.html in your browser.
 (Optional) Configure Firebase in firebase-config.js if using dynamic data features.
