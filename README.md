@@ -19,15 +19,13 @@ Lavender Home Care is a web-based showcasing a professional home care service pl
 
 * Fully responsive layout for desktop, tablet, and mobile
 * Hero section with call-to-action buttons (Book Appointment, WhatsApp)
-* About section with vision, mission, and statistics
+* About section with vision, mission
 * Services section detailing Personal, Live-in, and Hourly care
 * Contact section with interactive form modal
 * Chatbot widget for real-time client interaction
-* Image slider for showcasing care services
 * Sticky navigation with mobile-friendly menu
 * Footer with quick links and contact info
 * Smooth animations and scroll reveals for engaging UI
-* Dark/light color palette using custom Tailwind theme
 
 # 🧪 Development Process
 
