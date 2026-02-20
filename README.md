@@ -74,3 +74,5 @@ Clone the repository:
 * (Optional) Configure Firebase in firebase-config.js if using dynamic data features.
 
 # 🎥 Demo Video
+
+https://github.com/user-attachments/assets/44d40a90-7575-4456-8962-e0094577c627
