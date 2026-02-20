@@ -1,6 +1,6 @@
 // Firebase Configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBv1BnjXweYE8ihcqxPForYXrs5GawEky0",
+  apiKey: "AIzaSyD-88dDhAPFUxDR7jyRI1bGvJ4BxX3c8gs",
   authDomain: "lavender-home-care.firebaseapp.com",
   projectId: "lavender-home-care",
   storageBucket: "lavender-home-care.firebasestorage.app",
