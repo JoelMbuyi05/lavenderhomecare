@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lavender Home Care | Compassionate Home Care Services in Western Cape</title>
+    <link rel="icon" type="image/png" sizes="180x180" href="assets/images/logo.png">
+    <meta name="description" content="Professional, compassionate home care services across the Western Cape. Qualified carers providing personal care, companionship, and specialized support with dignity and respect.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        lavender: {
+                            50: '#f5f3ff',
+                            500: '#9b87f5',
+                            600: '#7c61db',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- ============================================
+         NAVIGATION
+         ============================================ -->
+    <nav class="bg-white sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <img src="assets/images/logo.png" alt="Lavender Home Care Logo" class="h-48 md:h-42 w-auto object-contain mt-3">
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center gap-8">
+                    <a href="#hero" class="nav-link text-gray-700 hover:text-lavender-600 font-medium transition-colors">Home</a>
+                    <a href="#about" class="nav-link text-gray-700 hover:text-lavender-600 font-medium transition-colors">About</a>
+                    <a href="#services" class="nav-link text-gray-700 hover:text-lavender-600 font-medium transition-colors">Services</a>
+                    <a href="#contact" class="nav-link text-gray-700 hover:text-lavender-600 font-medium transition-colors">Contact</a>
+                </div>
+
+                <!-- Book Button -->
+                <div class="hidden lg:block">
+                    <button id="bookAppointmentBtn" class="btn-primary">Book Appointment</button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="lg:hidden text-2xl hover:text-lavender-600 transition-colors">☰</button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden lg:hidden pb-4">
+                <div class="flex flex-col gap-3">
+                    <a href="#hero" class="text-gray-700 py-2 hover:text-lavender-600 transition-colors">Home</a>
+                    <a href="#about" class="text-gray-700 py-2 hover:text-lavender-600 transition-colors">About</a>
+                    <a href="#services" class="text-gray-700 py-2 hover:text-lavender-600 transition-colors">Services</a>
+                    <a href="#contact" class="text-gray-700 py-2 hover:text-lavender-600 transition-colors">Contact</a>
+                    <button id="mobileBookBtn" class="btn-primary justify-center mt-2">Book Appointment</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============================================
+         HERO SECTION
+         ============================================ -->
+    <section id="hero" class="text-white py-20 md:py-32 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-2xl">
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                    Compassionate Care,<br/>Right at Home
+                </h2>
+                <p class="text-lg md:text-xl mb-8 opacity-90">
+                    Professional home care services delivered with love, dignity, and genuine connection. We thoughtfully match qualified carers with your loved ones for care that feels personal and comforting.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <button id="heroBookBtn" class="btn-primary">Book Appointment</button>
+                    <a href="https://wa.me/0816929297" target="_blank" class="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-white px-8 py-3 rounded-full font-semibold transition-all inline-flex items-center gap-2">
+                        💬 WhatsApp Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         WHY CHOOSE SECTION
+         ============================================ -->
+    <section class="py-16 md:py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="section-title text-center mb-12 scroll-reveal">
+                <h2 class="text-3xl md:text-4xl">Why Choose Lavender Home Care</h2>
+                <p class="text-lg">Compassionate care built on trust, dignity, and professional excellence</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center scroll-reveal">
+                    <div class="icon-box mx-auto">
+                        <span class="text-white text-3xl">✓</span>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">Vetted Carers</h4>
+                    <p class="text-gray-600">All carers are thoroughly vetted, qualified, and continuously supported to ensure the highest standards of care.</p>
+                </div>
+
+                <div class="text-center scroll-reveal">
+                    <div class="icon-box mx-auto">
+                        <span class="text-white text-3xl">💜</span>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">Compassion First</h4>
+                    <p class="text-gray-600">Every interaction is rooted in genuine care, empathy, and understanding. We treat your loved ones like family.</p>
+                </div>
+
+                <div class="text-center scroll-reveal">
+                    <div class="icon-box mx-auto">
+                        <span class="text-white text-3xl">24/7</span>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">24/7 Support</h4>
+                    <p class="text-gray-600">Round-the-clock availability for emergencies and ongoing support to give you complete peace of mind.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         ABOUT SECTION
+         ============================================ -->
+    <section id="about" style="background: linear-gradient(135deg, #f5f3ff 0%, #ffffff 100%);" class="py-16 md:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Image Slider -->
+                <div class="scroll-reveal-left">
+                    <div class="image-slider">
+                        <div class="slider-container" id="sliderContainer">
+                            <img src="assets/images/pic2.jpeg" 
+                                 alt="Caring professional assisting senior" class="slider-image">
+                            <img src="assets/images/pic3.jpeg" 
+                                 alt="Companionship care" class="slider-image">
+                        </div>
+                        <button class="slider-btn prev" onclick="prevSlide()">←</button>
+                        <button class="slider-btn next" onclick="nextSlide()">→</button>
+                    </div>
+                </div>
+
+                <!-- About Content -->
+                <div class="scroll-reveal-right">
+                    <div class="section-title mb-6">
+                        <h2 class="text-3xl md:text-4xl">About Lavender Home Care</h2>
+                        <p class="text-lg">Dedicated to compassionate, professional care across the Western Cape</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <p class="text-gray-700 leading-relaxed">
+                            <strong class="text-lavender-600">Our Vision:</strong> At Lavender Home Care, we envision home care as more than a duty — it is an act of love, genuineness, and trust. We are committed to serving those who need a helping hand with grace, compassion, and dignity.
+                        </p>
+
+                        <p class="text-gray-700 leading-relaxed">
+                            By thoughtfully connecting highly qualified carers with your loved ones, we ensure care that feels personal, respectful, and comforting. Proudly serving families across the Western Cape, we strive to bring peace of mind and warmth into every home we touch.
+                        </p>
+
+                        <p class="text-gray-700 leading-relaxed">
+                            <strong class="text-lavender-600">Our Mission:</strong> Our mission is to provide compassionate, reliable, and high-quality home care that places dignity, trust, and genuine human connection at the heart of everything we do.
+                        </p>
+                    </div>
+
+                    <!-- Stats -->
+                    <div class="grid grid-cols-3 gap-6 mt-8">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-lavender-600">100+</div>
+                            <div class="text-sm text-gray-600">Families Served</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-lavender-600">50+</div>
+                            <div class="text-sm text-gray-600">Qualified Carers</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-3xl font-bold text-lavender-600">24/7</div>
+                            <div class="text-sm text-gray-600">Support</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         SERVICES SECTION
+         ============================================ -->
+    <section id="services" class="py-16 md:py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="section-title text-center mb-12 scroll-reveal">
+                <h2 class="text-3xl md:text-4xl">Our Care Services</h2>
+                <p class="text-lg">Personalized care solutions designed to meet your loved one's unique needs</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Personal Care -->
+                <div class="service-box scroll-reveal">
+                    <div class="icon-box">
+                        <span class="text-white text-3xl">👤</span>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">Personal Care</h4>
+                    <p class="text-gray-600 mb-4">Assistance with daily activities including bathing, grooming, dressing, and mobility support with dignity and respect.</p>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-center gap-2"><span class="text-lavender-600">✓</span> Daily living assistance</li>
+                        <li class="flex items-center gap-2"><span class="text-lavender-600">✓</span> Mobility support</li>
+                        <li class="flex items-center gap-2"><span class="text-lavender-600">✓</span> Holiday support</li>
+                    </ul>
+                </div>
+
+                <!-- Live-in Care -->
+                <div class="service-box scroll-reveal">
+                    <div class="icon-box">
+                        <span class="text-white text-3xl">🏠</span>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">Live-in Care</h4>
+                    <p class="text-gray-600 mb-4">Around-the-clock care and support in the comfort of your loved one's own home for complete peace of mind.</p>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-center gap-2"><span class="text-lavender-600">✓</span> 24/7 care</li>
+                        <li class="flex items-center gap-2"><span class="text-lavender-600">✓</span> Overnight assistance</li>
+                        <li class="flex items-center gap-2"><span class="text-lavender-600">✓</span> Dedicated carer</li>
+                    </ul>
+                </div>
+
+                <!-- Hourly Care -->
+                <div class="service-box scroll-reveal">
+                    <div class="icon-box">
+                        <span class="text-white text-3xl">🕐</span>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">Hourly Care</h4>
+                    <p class="text-gray-600 mb-4">Flexible hourly care services perfect for those who need assistance for specific times or tasks.</p>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-center gap-2"><span class="text-lavender-600">✓</span> Custom schedules</li>
+                        <li class="flex items-center gap-2"><span class="text-lavender-600">✓</span> Pay as you go</li>
+                        <li class="flex items-center gap-2"><span class="text-lavender-600">✓</span> No long-term contracts</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         CONTACT SECTION
+         ============================================ -->
+    <section id="contact" style="background: linear-gradient(135deg, #f5f3ff 0%, #ffffff 100%);" class="py-16 md:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="section-title text-center mb-12 scroll-reveal">
+                <h2 class="text-3xl md:text-4xl">Get In Touch</h2>
+                <p class="text-lg">We're here to answer your questions and discuss your care needs</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center scroll-reveal">
+                    <div class="icon-box mx-auto">
+                        <span class="text-white text-3xl">📍</span>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">Location</h4>
+                    <p class="text-gray-600">Western Cape<br/>South Africa</p>
+                </div>
+
+                <div class="text-center scroll-reveal">
+                    <div class="icon-box mx-auto">
+                        <span class="text-white text-3xl">📞</span>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">Call Us</h4>
+                    <p class="text-gray-600">+27 81 69 29 297</p>
+                </div>
+
+                <div class="text-center scroll-reveal">
+                    <div class="icon-box mx-auto">
+                        <span class="text-white text-3xl">✉️</span>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">Email Us</h4>
+                    <p class="text-gray-600">info@lavenderhomecare.co.za</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FOOTER
+         ============================================ -->
+    <footer style="background: #2c4964;" class="text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Lavender Home Care</h3>
+                    <p class="text-white/80 text-sm">Compassionate home care services delivered with love and dignity.</p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#services" class="text-white/80 hover:text-lavender-500 transition-colors">Services</a></li>
+                        <li><a href="#about" class="text-white/80 hover:text-lavender-500 transition-colors">About Us</a></li>
+                        <li><a href="#contact" class="text-white/80 hover:text-lavender-500 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4">Services</h4>
+                    <ul class="space-y-2 text-white/80">
+                        <li>Personal Care</li>
+                        <li>Live-in Care</li>
+                        <li>Hourly Care</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4">Contact</h4>
+                    <ul class="space-y-2 text-white/80 text-sm">
+                        <li>📞 +27 81 69 29 297</li>
+                        <li>✉️ info@lavenderhomecare.co.za</li>
+                        <li>📍 Western Cape, SA</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/20 pt-8 text-center text-white/80">
+                <p>© 2026 Lavender Home Care. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================
+         CONTACT MODAL
+         ============================================ -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <!-- Modal Header with Close Button -->
+            <div class="contact-header">
+                <h3>To help us assist you better, please share your contact details and let us know what you are interested in.</h3>
+                <button class="modal-close" onclick="closeContactModal()" title="Close">✕</button>
+            </div>
+            
+            <!-- Modal Body -->
+            <div class="contact-body">
+                <form id="contactFormModal">
+                    <div class="form-group">
+                        <label for="firstName">First Name <span>*</span></label>
+                        <input type="text" id="firstName" name="firstName" class="form-control" placeholder="Enter your first name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="lastName">Last Name <span>*</span></label>
+                        <input type="text" id="lastName" name="lastName" class="form-control" placeholder="Enter your last name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email <span>*</span></label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="your.email@example.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone <span>*</span></label>
+                        <input type="tel" id="phone" name="phone" class="form-control" placeholder="+27 12 345 6789" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>I prefer to be contacted via</label>
+                        <div class="contact-type">
+                            <label>
+                                <input type="checkbox" name="contactVia" value="Phone">
+                                Phone
+                            </label>
+                            <label>
+                                <input type="checkbox" name="contactVia" value="Email">
+                                Email
+                            </label>
+                            <label>
+                                <input type="checkbox" name="contactVia" value="WhatsApp">
+                                WhatsApp
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>I am looking for <span>*</span></label>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="serviceFor" value="Personal Care" required>
+                                Personal Care
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="serviceFor" value="Live-in Care">
+                                Live-in Care
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="serviceFor" value="Hourly Care">
+                                Hourly Care
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Additional Information</label>
+                        <textarea id="message" name="message" class="form-control" rows="4" placeholder="Tell us about your specific needs or any questions you have..."></textarea>
+                    </div>
+                    
+                    <label class="terms-check">
+                        <input type="checkbox" name="terms" required>
+                        <span>By providing my information, I agree to be contacted by Lavender Home Care via email, telephone or WhatsApp messaging.</span>
+                    </label>
+                    
+                    <button type="submit" class="btn-submit">
+                        Submit Request
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         SUCCESS MODAL
+         ============================================ -->
+    <div id="successModal" class="modal">
+        <div class="modal-content" style="max-width: 480px;">
+            <div class="contact-header" style="border-radius: 24px 24px 0 0;">
+                <h3>Request Submitted</h3>
+                <button class="modal-close" onclick="closeSuccessModal()" title="Close">✕</button>
+            </div>
+            <div class="success-message">
+                <div style="width:80px;height:80px;background:#f0fdf4;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
+                    <span style="font-size:40px;">✅</span>
+                </div>
+                <h4>Thank You!</h4>
+                <p>Your request has been submitted successfully. Our team will contact you within 24 hours.</p>
+                <button id="closeSuccessModal" class="btn-submit" style="max-width:180px;margin:0 auto;">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         CHATBOT WIDGET
+         ============================================ -->
+    <button id="chatToggle" class="chat-toggle">💬</button>
+
+    <div id="chatWidget" class="chat-widget">
+        <!-- Chat Header with Close Button -->
+        <div class="chat-header">
+            <div class="chat-header-left">
+                <div class="chat-header-avatar">💜</div>
+                <div class="chat-header-text">
+                    <h3>Lavender Home Care</h3>
+                    <p>🟢 We typically reply instantly</p>
+                </div>
+            </div>
+            <button id="chatClose" class="chat-close" title="Close chat">✕</button>
+        </div>
+
+        <!-- Chat Messages -->
+        <div id="chatMessages" class="chat-messages"></div>
+
+        <!-- Chat Input -->
+        <div class="chat-input-area">
+            <input type="text" id="chatInput" placeholder="Type your name to get started...">
+            <button id="chatSend" class="chat-send-btn">→</button>
+        </div>
+    </div>
+
+    <!-- ============================================
+         SCRIPTS
+         ============================================ -->
+    <script src="js/firebase-config.js"></script>
+    <script src="js/chatbot.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
