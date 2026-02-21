@@ -5,7 +5,7 @@
 
 const EMAIL_SERVICE_ID = "service_ydmcdh8";
 const CUSTOMER_TEMPLATE = "template_qwlvpje"; // Your existing template ID
-const ADMIN_TEMPLATE = "template_qwlvpje"; // Use SAME template for now until you create the second one
+const ADMIN_TEMPLATE = "template_qwlvpje"; // Use SAME template for now 
 
 let currentSlide = 0;
 
@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (closeSuccessBtn) closeSuccessBtn.addEventListener('click', closeSuccessModal);
     
     // ============================================
-    // BOOKING FORM SUBMISSION - MAXIMIZED
+    // BOOKING FORM SUBMISSION 
     // ============================================
     const contactForm = document.getElementById('contactFormModal');
     if (contactForm) {
